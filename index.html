@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD Mobarok Hossan Munna - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      color: #e2e8f0;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+    }
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .section-content {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section id="home" class="text-center">
+    <div class="section-content max-w-2xl mx-auto">
+      <h1 class="text-5xl font-bold mb-4 text-white">MD Mobarok Hossan Munna</h1>
+      <p class="text-xl text-gray-300">Welcome to My Portfolio</p>
+    </div>
+  </section>
+
+  <!-- Background Section -->
+  <section id="background">
+    <div class="section-content max-w-3xl mx-auto">
+      <h2 class="text-4xl font-semibold mb-6 text-white">My Background</h2>
+      <p class="text-lg text-gray-300">
+        I am a dedicated student in Class 11 at Dumuria Govt. Technical School and College, pursuing my passion for learning and innovation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="section-content max-w-3xl mx-auto">
+      <h2 class="text-4xl font-semibold mb-6 text-white">My Skills</h2>
+      <p class="text-lg text-gray-300">
+        I am currently studying <span class="font-bold text-blue-400">Civil Engineering</span>, building a strong foundation in technical and problem-solving skills.
+      </p>
+    </div>
+  </section>
+
+  <!-- Goals Section -->
+  <section id="goals">
+    <div class="section-content max-w-3xl mx-auto">
+      <h2 class="text-4xl font-semibold mb-6 text-white">My Goals</h2>
+      <p class="text-lg text-gray-300">
+        My ambition is to invent <span class="font-bold text-blue-400">multiple outstanding technologies</span> that make a positive impact on the world.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // GSAP Animations
+    document.addEventListener('DOMContentLoaded', () => {
+      gsap.registerPlugin();
+
+      // Animate each section sequentially
+      gsap.fromTo(
+        '.section-content',
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.5,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.section-content',
+            start: 'top 80%',
+          },
+        }
+      );
+    });
+  </script>
+</body>
+</html>
