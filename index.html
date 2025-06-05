@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZAM - Premium Products</title>
+    <title>ZAM - Premium Digital Products</title>
     <style>
         * {
             margin: 0;
@@ -15,245 +15,125 @@
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: white;
-            padding-bottom: 80px; /* Space for bottom navigation */
+            padding: 0;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
         }
 
         .container {
-            max-width: 400px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-            margin-bottom: 20px;
+            background: white;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            padding-bottom: 80px;
         }
 
         .header {
-            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             padding: 20px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shine 3s infinite;
-            top: -50%;
-            left: -50%;
-        }
-
-        @keyframes shine {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .logo {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .balance {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            margin: 10px 10px 20px 10px;
-            border-radius: 15px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .balance-amount {
-            font-size: 1.5em;
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
             font-weight: bold;
-            color: #ffd700;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .main-buttons {
+            display: flex;
+            padding: 15px;
+            gap: 10px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 400px;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-btn {
+            flex: 1;
+            padding: 12px 8px;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-icon {
+            font-size: 18px;
+        }
+
+        .btn-products {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-account, .btn-orders {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .main-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .content {
-            padding: 20px;
-            min-height: 400px;
+            padding: 20px 15px;
         }
 
-        .product {
-            background: rgba(255, 255, 255, 0.1);
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .product-card {
+            background: white;
             border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
             position: relative;
             overflow: hidden;
         }
 
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
         .product-icon {
-            font-size: 3em;
+            font-size: 40px;
             text-align: center;
             margin-bottom: 10px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        .product-name {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .product-price {
-            color: #ffd700;
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .product-stock {
-            font-size: 0.9em;
-            color: #ffcccb;
-            margin-bottom: 10px;
-        }
-
-        .buy-btn {
-            width: 100%;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border: none;
-            color: white;
-            padding: 12px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-
-        .buy-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .task {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .task-info {
-            flex-grow: 1;
-        }
-
-        .task-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .task-reward {
-            color: #ffd700;
-            font-size: 0.9em;
-        }
-
-        .task-btn {
-            background: #4ecdc4;
-            border: none;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .task-btn:hover {
-            background: #45b7b8;
-            transform: scale(1.05);
-        }
-
-        .task-btn.completed {
-            background: #27ae60;
-            cursor: default;
-        }
-
-        .referral-section {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .referral-link {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px;
-            border-radius: 10px;
-            margin: 10px 0;
-            word-break: break-all;
-            font-size: 0.9em;
-        }
-
-        .copy-btn {
-            background: #4ecdc4;
-            border: none;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .telegram-link {
-            display: block;
-            text-align: center;
-            background: #0088cc;
-            color: white;
-            padding: 15px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 10px 0;
-            transition: all 0.3s ease;
-        }
-
-        .telegram-link:hover {
-            background: #006699;
-            transform: scale(1.02);
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .stat {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-            flex: 1;
-            margin: 0 5px;
-        }
-
-        .floating-animation {
             animation: float 3s ease-in-out infinite;
         }
 
@@ -262,440 +142,531 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Bottom Navigation Styles */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            border-radius: 25px 25px 0 0;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-bottom: none;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .product-price {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
             padding: 8px 12px;
-            border-radius: 15px;
-            min-width: 70px;
-        }
-
-        .nav-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .nav-item.active {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .nav-icon {
-            font-size: 1.5em;
-            margin-bottom: 4px;
-        }
-
-        .nav-text {
-            font-size: 0.8em;
+            border-radius: 20px;
             font-weight: bold;
             text-align: center;
+            margin: 10px 0;
+            font-size: 14px;
         }
 
-        .order-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 15px;
+        .product-stock {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
             margin-bottom: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .order-details {
-            flex-grow: 1;
+        .available { color: #28a745; }
+        .limited { color: #ffc107; }
+        .soldout { color: #dc3545; }
+
+        .buy-btn {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
         }
 
-        .order-product {
-            font-size: 1.5em;
+        .buy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .account-section {
+            display: none;
+            padding: 20px;
+        }
+
+        .orders-section {
+            display: none;
+            padding: 20px;
+        }
+
+        .balance-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .balance-amount {
+            font-size: 32px;
+            font-weight: bold;
             margin-bottom: 5px;
         }
 
-        .order-info {
-            font-size: 0.9em;
-            color: #ccc;
+        .tasks-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-info {
+            flex: 1;
+        }
+
+        .task-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .task-reward {
+            color: #28a745;
+            font-size: 14px;
+        }
+
+        .task-btn {
+            padding: 8px 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 12px;
+            min-width: 60px;
+        }
+
+        .task-btn.completed {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .purchased-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .purchased-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .purchased-item:last-child {
+            border-bottom: none;
+        }
+
+        .purchased-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .telegram-link {
+            background: #0088cc;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #28a745, #20c997);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .order-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #28a745;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .order-icon {
+            font-size: 24px;
+            margin-right: 15px;
         }
 
         .order-status {
-            background: #27ae60;
+            background: #28a745;
             color: white;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: bold;
+        }
+
+        .order-details {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">🏪 ZAM</div>
+            <h1>ZAM</h1>
+            <p>Premium Digital Products</p>
         </div>
 
-        <div class="content">
-            <!-- Home/Products Section -->
-            <div id="home-section">
-                <div class="products-grid">
-                    <div class="product">
-                        <div class="product-icon">🧢</div>
-                        <div class="product-price">0.05 TON</div>
-                        <div class="product-stock">850/1000 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=50000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('🧢', '0.05 TON')" target="_blank">Buy with TON</a>
+        <div id="products-section" class="content">
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">🎩</div>
+                    <div class="product-price">0.05 TON</div>
+                    <div class="product-stock available">Available: 847/1000</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 84.7%"></div>
                     </div>
-
-                    <div class="product">
-                        <div class="product-icon">👕</div>
-                        <div class="product-price">0.08 TON</div>
-                        <div class="product-stock">420/500 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=80000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('👕', '0.08 TON')" target="_blank">Buy with TON</a>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-icon">👟</div>
-                        <div class="product-price">0.15 TON</div>
-                        <div class="product-stock">180/300 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=150000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('👟', '0.15 TON')" target="_blank">Buy with TON</a>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-icon">🎒</div>
-                        <div class="product-price">0.12 TON</div>
-                        <div class="product-stock">560/750 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=120000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('🎒', '0.12 TON')" target="_blank">Buy with TON</a>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-icon">📱</div>
-                        <div class="product-price">0.03 TON</div>
-                        <div class="product-stock">1650/2000 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=30000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('📱', '0.03 TON')" target="_blank">Buy with TON</a>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-icon">⌚</div>
-                        <div class="product-price">0.25 TON</div>
-                        <div class="product-stock">95/150 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=250000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('⌚', '0.25 TON')" target="_blank">Buy with TON</a>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-icon">🎧</div>
-                        <div class="product-price">0.18 TON</div>
-                        <div class="product-stock">320/400 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=180000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('🎧', '0.18 TON')" target="_blank">Buy with TON</a>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-icon">💻</div>
-                        <div class="product-price">0.45 TON</div>
-                        <div class="product-stock">28/50 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=450000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('💻', '0.45 TON')" target="_blank">Buy with TON</a>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-icon">🕶️</div>
-                        <div class="product-price">0.07 TON</div>
-                        <div class="product-stock">780/1200 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=70000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('🕶️', '0.07 TON')" target="_blank">Buy with TON</a>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-icon">🔋</div>
-                        <div class="product-price">0.06 TON</div>
-                        <div class="product-stock">890/1500 left</div>
-                        <a href="https://app.tonkeeper.com/transfer/UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl?amount=60000000&text=Product%20Purchase" class="buy-btn" onclick="addOrder('🔋', '0.06 TON')" target="_blank">Buy with TON</a>
-                    </div>
+                    <button class="buy-btn" onclick="buyProduct(0.05)">Buy with TON</button>
                 </div>
 
-                <a href="https://t.me/mtvip999" class="telegram-link" target="_blank">
-                    📢 Join Our Telegram Channel
-                </a>
+                <div class="product-card">
+                    <div class="product-icon">👑</div>
+                    <div class="product-price">0.08 TON</div>
+                    <div class="product-stock limited">Available: 234/500</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 46.8%"></div>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct(0.08)">Buy with TON</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">💎</div>
+                    <div class="product-price">0.12 TON</div>
+                    <div class="product-stock available">Available: 1876/2000</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 93.8%"></div>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct(0.12)">Buy with TON</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">🔥</div>
+                    <div class="product-price">0.03 TON</div>
+                    <div class="product-stock available">Available: 3456/5000</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 69.1%"></div>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct(0.03)">Buy with TON</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">⚡</div>
+                    <div class="product-price">0.15 TON</div>
+                    <div class="product-stock limited">Available: 89/300</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 29.7%"></div>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct(0.15)">Buy with TON</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">🎯</div>
+                    <div class="product-price">0.07 TON</div>
+                    <div class="product-stock available">Available: 1234/1500</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 82.3%"></div>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct(0.07)">Buy with TON</button>
+                </div>
             </div>
 
-            <!-- Account Section -->
-            <div id="account-section" class="hidden">
-                <div class="balance">
-                    <div>Balance</div>
-                    <div class="balance-amount" id="balance">0 Points</div>
-                </div>
+            <a href="https://t.me/mtvip999" class="telegram-link" target="_blank">
+                📢 Join Our Telegram Channel
+            </a>
+        </div>
 
-                <div class="stats">
-                    <div class="stat">
-                        <div>Total Earned</div>
-                        <div id="total-earned">0</div>
-                    </div>
-                    <div class="stat">
-                        <div>Referrals</div>
-                        <div id="referral-count">0</div>
-                    </div>
-                </div>
+        <div id="account-section" class="account-section">
+            <div class="balance-card">
+                <div class="balance-amount" id="balance">0</div>
+                <div>Points Balance</div>
+            </div>
 
-                <div class="referral-section">
-                    <h3>Referral System</h3>
-                    <p>Earn 1 point for each referral (50 referrals needed)</p>
-                    <div class="referral-link" id="referral-link">
-                        https://zam-bot.com/ref?id=USER123
-                    </div>
-                    <button class="copy-btn" onclick="copyReferralLink()">Copy Link</button>
-                </div>
-
-                <h3 style="margin-bottom: 15px;">Available Tasks</h3>
+            <div class="tasks-section">
+                <div class="section-title">Available Tasks</div>
                 
-                <div class="task">
-                    <div class="task-info">
-                        <div class="task-title">Follow Telegram Channel</div>
-                        <div class="task-reward">+10 Points</div>
-                    </div>
-                    <button class="task-btn" onclick="completeTask(this, 10, 'https://t.me/mtvip999')">Open</button>
-                </div>
-
-                <div class="task">
+                <div class="task-item">
                     <div class="task-info">
                         <div class="task-title">Subscribe YouTube Channel</div>
+                        <div class="task-reward">+50 Points</div>
+                    </div>
+                    <button class="task-btn" onclick="completeTask(this, 50, 'https://youtube.com')">Open</button>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-info">
+                        <div class="task-title">Follow Telegram Channel</div>
+                        <div class="task-reward">+30 Points</div>
+                    </div>
+                    <button class="task-btn" onclick="completeTask(this, 30, 'https://t.me/mtvip999')">Open</button>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-info">
+                        <div class="task-title">Join Telegram Group</div>
+                        <div class="task-reward">+25 Points</div>
+                    </div>
+                    <button class="task-btn" onclick="completeTask(this, 25, 'https://t.me/mtvip999')">Open</button>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-info">
+                        <div class="task-title">Open Telegram Bot</div>
                         <div class="task-reward">+15 Points</div>
                     </div>
-                    <button class="task-btn" onclick="completeTask(this, 15, 'https://youtube.com')">Open</button>
-                </div>
-
-                <div class="task">
-                    <div class="task-info">
-                        <div class="task-title">Join Telegram Bot</div>
-                        <div class="task-reward">+5 Points</div>
-                    </div>
-                    <button class="task-btn" onclick="completeTask(this, 5, 'https://t.me/your_bot')">Open</button>
-                </div>
-
-                <div class="task">
-                    <div class="task-info">
-                        <div class="task-title">Share with Friends</div>
-                        <div class="task-reward">+20 Points</div>
-                    </div>
-                    <button class="task-btn" onclick="completeTask(this, 20, '')">Open</button>
-                </div>
-
-                <div class="task">
-                    <div class="task-info">
-                        <div class="task-title">Daily Check-in</div>
-                        <div class="task-reward">+5 Points</div>
-                    </div>
-                    <button class="task-btn" onclick="completeTask(this, 5, '')">Open</button>
+                    <button class="task-btn" onclick="completeTask(this, 15, 'https://t.me/mtvip999')">Open</button>
                 </div>
             </div>
 
-            <!-- Orders Section -->
-            <div id="orders-section" class="hidden">
-                <h3 style="margin-bottom: 15px;">আপনার অর্ডার সমূহ</h3>
-                <div id="orders-list">
-                    <div style="text-align: center; color: #ccc; margin-top: 50px;">
-                        <p>এখনও কোন অর্ডার নেই</p>
-                        <p>প্রোডাক্ট কিনুন এবং এখানে দেখুন</p>
+            <div class="purchased-section">
+                <div class="section-title">Purchased Products</div>
+                <div id="purchased-list">
+                    <div style="text-align: center; color: #666; padding: 20px;">
+                        No products purchased yet
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bottom Navigation -->
-    <div class="bottom-nav">
-        <div class="nav-item active" onclick="showSection('home')">
-            <div class="nav-icon">🏠</div>
-            <div class="nav-text">Home</div>
+        <div id="orders-section" class="orders-section">
+            <div class="section-title">My Orders</div>
+            <div id="orders-list">
+                <div style="text-align: center; color: #666; padding: 40px;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">📦</div>
+                    <div style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">No Orders Yet</div>
+                    <div>Purchase products to see your orders here</div>
+                </div>
+            </div>
         </div>
-        <div class="nav-item" onclick="showSection('account')">
-            <div class="nav-icon">👤</div>
-            <div class="nav-text">Account</div>
-        </div>
-        <div class="nav-item" id="orders-nav" onclick="showSection('orders')" style="display: none;">
-            <div class="nav-icon">📦</div>
-            <div class="nav-text">Orders</div>
+
+        <div class="main-buttons">
+            <button class="main-btn btn-products" onclick="showProducts()">
+                <div class="btn-icon">🏠</div>
+                <div>Products</div>
+            </button>
+            <button class="main-btn btn-account" onclick="showAccount()">
+                <div class="btn-icon">👤</div>
+                <div>Account</div>
+            </button>
+            <button class="main-btn btn-orders" onclick="showOrders()">
+                <div class="btn-icon">📦</div>
+                <div>My Orders</div>
+            </button>
         </div>
     </div>
 
     <script>
-        let userBalance = 0;
-        let totalEarned = 0;
-        let referralCount = 0;
-        let completedTasks = [];
-        let userOrders = [];
+        let balance = 0;
+        let purchasedProducts = [];
+        const tonAddress = "UQCC9TTHlJZLNH09baIi3UONk69UR-8YbedySf7F9sF-UJJl";
 
-        function addOrder(product, price) {
-            const order = {
-                id: Date.now(),
-                product: product,
-                price: price,
-                date: new Date().toLocaleDateString(),
-                status: 'Completed'
-            };
+        function showProducts() {
+            document.getElementById('products-section').style.display = 'block';
+            document.getElementById('account-section').style.display = 'none';
+            document.getElementById('orders-section').style.display = 'none';
             
-            userOrders.push(order);
-            
-            // Show Orders navigation
-            document.getElementById('orders-nav').style.display = 'flex';
-            
-            // Update orders display
-            updateOrdersDisplay();
+            // Reset all buttons
+            resetButtonStyles();
+            document.querySelector('.btn-products').style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            document.querySelector('.btn-products').style.color = 'white';
         }
 
-        function updateOrdersDisplay() {
-            const ordersList = document.getElementById('orders-list');
+        function showAccount() {
+            document.getElementById('products-section').style.display = 'none';
+            document.getElementById('account-section').style.display = 'block';
+            document.getElementById('orders-section').style.display = 'none';
             
-            if (userOrders.length === 0) {
-                ordersList.innerHTML = `
-                    <div style="text-align: center; color: #ccc; margin-top: 50px;">
-                        <p>এখনও কোন অর্ডার নেই</p>
-                        <p>প্রোডাক্ট কিনুন এবং এখানে দেখুন</p>
-                    </div>
-                `;
-            } else {
-                ordersList.innerHTML = userOrders.map(order => `
-                    <div class="order-item">
-                        <div class="order-details">
-                            <div class="order-product">${order.product}</div>
-                            <div class="order-info">${order.price} - ${order.date}</div>
-                        </div>
-                        <div class="order-status">${order.status}</div>
-                    </div>
-                `).join('');
-            }
+            // Reset all buttons
+            resetButtonStyles();
+            document.querySelector('.btn-account').style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            document.querySelector('.btn-account').style.color = 'white';
+            
+            updatePurchasedList();
         }
 
-        function updateBalance() {
-            document.getElementById('balance').textContent = userBalance + ' Points';
-            document.getElementById('total-earned').textContent = totalEarned;
-            document.getElementById('referral-count').textContent = referralCount;
+        function showOrders() {
+            document.getElementById('products-section').style.display = 'none';
+            document.getElementById('account-section').style.display = 'none';
+            document.getElementById('orders-section').style.display = 'block';
+            
+            // Reset all buttons
+            resetButtonStyles();
+            document.querySelector('.btn-orders').style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            document.querySelector('.btn-orders').style.color = 'white';
+            
+            updateOrdersList();
         }
 
-        function showSection(section) {
-            // Remove active class from all nav items
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            
-            // Add active class to clicked nav item
-            event.target.closest('.nav-item').classList.add('active');
-            
-            // Hide all sections
-            document.getElementById('home-section').classList.add('hidden');
-            document.getElementById('account-section').classList.add('hidden');
-            document.getElementById('orders-section').classList.add('hidden');
-            
-            // Show selected section
-            document.getElementById(section + '-section').classList.remove('hidden');
+        function resetButtonStyles() {
+            const buttons = ['.btn-products', '.btn-account', '.btn-orders'];
+            buttons.forEach(btn => {
+                document.querySelector(btn).style.background = '#e9ecef';
+                document.querySelector(btn).style.color = '#495057';
+            });
         }
 
-        function completeTask(button, points, link) {
-            const taskTitle = button.parentElement.querySelector('.task-title').textContent;
+        function buyProduct(price) {
+            // Create TON payment URL
+            const tonUrl = `https://app.tonkeeper.com/transfer/${tonAddress}?amount=${price * 1000000000}&text=Product Purchase`;
             
-            if (completedTasks.includes(taskTitle)) {
-                return;
-            }
-
-            if (link) {
-                window.open(link, '_blank');
-            }
-
-            // Add delay for task completion
+            // Open TON wallet
+            window.open(tonUrl, '_blank');
+            
+            // Simulate purchase completion after payment
             setTimeout(() => {
-                userBalance += points;
-                totalEarned += points;
-                completedTasks.push(taskTitle);
+                const productData = {
+                    '0.05': { icon: '🎩', name: 'Premium Hat' },
+                    '0.08': { icon: '👑', name: 'Royal Crown' },
+                    '0.12': { icon: '💎', name: 'Diamond Package' },
+                    '0.03': { icon: '🔥', name: 'Fire Boost' },
+                    '0.15': { icon: '⚡', name: 'Lightning Pack' },
+                    '0.07': { icon: '🎯', name: 'Target Special' }
+                };
                 
+                const product = productData[price.toString()];
+                const orderData = {
+                    id: 'ORD' + Date.now().toString().slice(-6),
+                    icon: product.icon,
+                    name: product.name,
+                    price: price,
+                    date: new Date().toLocaleDateString(),
+                    time: new Date().toLocaleTimeString(),
+                    status: 'Completed'
+                };
+                
+                purchasedProducts.push(orderData);
+                
+                alert('Payment successful! Product added to your orders.');
+                updateOrdersList();
+                updatePurchasedList();
+            }, 3000);
+        }
+
+        function completeTask(button, points, url) {
+            if (button.classList.contains('completed')) return;
+            
+            // Open the task URL
+            window.open(url, '_blank');
+            
+            // Mark as completed after delay
+            setTimeout(() => {
                 button.textContent = 'Completed';
                 button.classList.add('completed');
-                button.disabled = true;
+                balance += points;
+                document.getElementById('balance').textContent = balance;
                 
-                updateBalance();
-                
-                // Show success animation
-                button.style.transform = 'scale(1.1)';
+                // Add completion animation
+                button.style.background = '#28a745';
                 setTimeout(() => {
-                    button.style.transform = 'scale(1)';
-                }, 200);
+                    button.style.background = '#6c757d';
+                }, 1000);
             }, 2000);
         }
 
-        function copyReferralLink() {
-            const referralLink = document.getElementById('referral-link').textContent;
-            navigator.clipboard.writeText(referralLink).then(() => {
-                const copyBtn = event.target;
-                const originalText = copyBtn.textContent;
-                copyBtn.textContent = 'Copied!';
-                setTimeout(() => {
-                    copyBtn.textContent = originalText;
-                }, 2000);
-            });
-        }
-
-        // Check for referral on page load
-        function checkReferral() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const refId = urlParams.get('ref');
+        function updateOrdersList() {
+            const listContainer = document.getElementById('orders-list');
             
-            if (refId && referralCount === 0) {
-                referralCount += 1;
-                userBalance += 1;
-                totalEarned += 1;
-                updateBalance();
+            if (purchasedProducts.length === 0) {
+                listContainer.innerHTML = `
+                    <div style="text-align: center; color: #666; padding: 40px;">
+                        <div style="font-size: 48px; margin-bottom: 20px;">📦</div>
+                        <div style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">No Orders Yet</div>
+                        <div>Purchase products to see your orders here</div>
+                    </div>`;
+                return;
             }
-        }
-
-        // Initialize completed tasks on page load
-        function initializeTasks() {
-            const tasks = document.querySelectorAll('.task-btn');
-            tasks.forEach(button => {
-                const taskTitle = button.parentElement.querySelector('.task-title').textContent;
-                if (completedTasks.includes(taskTitle)) {
-                    button.textContent = 'Completed';
-                    button.classList.add('completed');
-                    button.disabled = true;
-                }
-            });
-        }
-
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', function() {
-            updateBalance();
-            checkReferral();
-            initializeTasks();
-            updateOrdersDisplay();
             
-            // Show orders navigation if user has orders
-            if (userOrders.length > 0) {
-                document.getElementById('orders-nav').style.display = 'flex';
+            listContainer.innerHTML = purchasedProducts.map(order => `
+                <div class="order-card">
+                    <div class="order-header">
+                        <div style="display: flex; align-items: center; flex: 1;">
+                            <div class="order-icon">${order.icon}</div>
+                            <div>
+                                <div style="font-weight: bold; font-size: 16px;">${order.name}</div>
+                                <div style="color: #666; font-size: 14px;">Order ID: ${order.id}</div>
+                            </div>
+                        </div>
+                        <div class="order-status">Completed</div>
+                    </div>
+                    <div class="order-details">
+                        <div><strong>Price:</strong> ${order.price} TON</div>
+                        <div><strong>Date:</strong> ${order.date} at ${order.time}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updatePurchasedList() {
+            const listContainer = document.getElementById('purchased-list');
+            
+            if (purchasedProducts.length === 0) {
+                listContainer.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">No products purchased yet</div>';
+                return;
             }
-        });
-
-        // Add some interactive animations
-        document.querySelectorAll('.product').forEach(product => {
-            product.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.02)';
-            });
             
-            product.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
+            listContainer.innerHTML = purchasedProducts.map(product => `
+                <div class="purchased-item">
+                    <div class="purchased-icon">${product.icon}</div>
+                    <div>
+                        <div style="font-weight: bold;">${product.name}</div>
+                        <div style="font-size: 12px; color: #666;">${product.date}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize with products view
+        showProducts();
     </script>
 </body>
 </html>
